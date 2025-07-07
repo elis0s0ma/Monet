@@ -20,8 +20,11 @@
 
 
 CountsDist =
-  function(obj){
-    p = ggplot(CGsc@meta.data, aes(x = orig.ident, y = CountsOverThree)) +
+  function(obj, counts = 3){
+    vec = apply(as.data.frame(obj@assays$RNA@counts), 2, FUN = function(x) sum(x >= counts))
+    obj@meta.data$CountsOverThree = vec
+    
+    p = ggplot(obj@meta.data, aes(x = orig.ident, y = CountsOverThree)) +
       geom_violin(fill = "#21918c") +
       theme_bw() +
       stat_summary(fun.data = "mean_sdl",
