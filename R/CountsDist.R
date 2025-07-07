@@ -20,11 +20,11 @@
 
 CountsDist = 
 function(obj, counts = 3){
-  newobj = obj
-  vec = apply(as.data.frame(newobj@assays$RNA@counts), 2, FUN = function(x) sum(x >= counts))
-  newobj@meta.data$CountsOverThree = vec
+  vec = apply(as.data.frame(obj@assays$RNA@counts), 2, FUN = function(x) sum(x >= counts))
+  metadata = newobj@meta.data
+  metadata$CountsOverThree = vec
   
-  p = ggplot(newobj@meta.data, aes(x = orig.ident, y = CountsOverThree)) +
+  p = ggplot(metadata, aes(x = orig.ident, y = CountsOverThree)) +
     geom_violin(fill = "#21918c") +
     theme_bw() +
     stat_summary(fun.data = "mean_sdl", geom = "pointrange", color = "#440154") +
