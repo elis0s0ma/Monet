@@ -19,15 +19,16 @@
 #' @export
 
 
-CountsDist = 
-function(obj, counts = 3){
+CountsDist = function(obj, counts = 3){
   vec = apply(as.data.frame(obj@assays$RNA@counts), 2, FUN = function(x) sum(x >= counts))
-  obj@meta.data$CountsOverThree = vec
+  plot_data = obj@meta.data
+  plot_data$CountsOverThree = vec
   
-  p = ggplot(obj@meta.data, aes(x = orig.ident, y = CountsOverThree)) +
+  p = ggplot(plot_data, aes(x = orig.ident, y = CountsOverThree)) +
     geom_violin(fill = "#21918c") +
     theme_bw() +
     stat_summary(fun.data = "mean_sdl", geom = "pointrange", color = "#440154") +
     labs(y = paste0("N. of genes with UMIs ≥ ", counts))
   return(p)
 }
+
