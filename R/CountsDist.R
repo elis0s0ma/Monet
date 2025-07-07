@@ -21,7 +21,7 @@
 CountsDist = 
 function(obj, counts = 3){
   vec = apply(as.data.frame(obj@assays$RNA@counts), 2, FUN = function(x) sum(x >= counts))
-  metadata = newobj@meta.data
+  metadata = obj@meta.data
   metadata$CountsOverThree = vec
   
   p = ggplot(metadata, aes(x = orig.ident, y = CountsOverThree)) +
