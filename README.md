@@ -1,5 +1,5 @@
 
-# SeuratFuncional
+# Monet
 
 SeuratFunctional contains a few handy functions to perform specific
 tasks on a Seurat Object. It was specifically created for the UniTO
