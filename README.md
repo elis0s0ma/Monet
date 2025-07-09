@@ -1,17 +1,17 @@
 
-# Monet
+# Degas
 
-Monet contains a few handy functions to perform specific
+Degas contains a few handy functions to perform specific
 tasks on a Seurat Object. It was specifically created for the UniTO
 Programming exam. :)
 
 ## Installation
 
-You can install the development version of SeuratFuncional like so:
+You can install the development version of Degas like so:
 
 ``` r
 if (!require("remotes")) install.packages("remotes") 
-remotes::install_github("elis0s0ma/SeuratFuncional")
+remotes::install_github("elis0s0ma/Degas")
 ```
 
 ## Examples and Use
@@ -21,7 +21,7 @@ Here’s how you’d usually use these functions:
 first of all, load the package!
 
 ``` r
-library(SeuratFuncional)
+library(Degas)
 ```
 
 Up with the first function.
