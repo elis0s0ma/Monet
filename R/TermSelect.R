@@ -22,7 +22,7 @@ TermSelect =
 function(obj, gtf, type){
   name_pos = grep(colnames(gtf), pattern = "(?=.*gene)(?=.*name)", perl = T, ignore.case = T)
   bio_pos = grep(colnames(gtf), pattern = "(?=.*gene)(?=.*biotype)", perl = T, ignore.case = T)
-  filtGTF = na.omit(gtf[gtf[,name_pos] %in% rownames(obj), c(name_pos, bio_pos)])
+  filtGTF = na.omit(gtf[,name_pos] %in% rownames(obj), c(name_pos, bio_pos)])
   colnames(filtGTF) = c("gene_name", "gene_biotype")
   filtGTF = filtGTF[!duplicated(filtGTF$gene_name), ]
   PC_GTF = filtGTF[which(filtGTF$gene_biotype == type), ]
